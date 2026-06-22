@@ -86,7 +86,7 @@ export default function TilawatPlayer({
       <div className="grid md:grid-cols-12 gap-4 bg-natural-card border border-natural-border/50 p-5 rounded-3xl shadow-xs items-center">
         
         {/* Reciter selection dropdown */}
-        <div className="md:col-span-6 flex items-center gap-2">
+        <div className="md:col-span-6 flex flex-col gap-2">
           <label className="text-xs font-bold font-mono text-natural-text flex items-center gap-1 uppercase tracking-wider">
             <UserCheck className="h-4 w-4 text-natural-moss" />
             Select Reciter (Qari):
@@ -105,7 +105,7 @@ export default function TilawatPlayer({
         </div>
 
         {/* Searching input bar */}
-        <div className="md:col-span-6 relative">
+        <div className="md:col-span-6 relative mt-6">
           <input
             type="text"
             placeholder="Search within Surahs (e.g., Al-Kahf, Ar-Rahman)..."

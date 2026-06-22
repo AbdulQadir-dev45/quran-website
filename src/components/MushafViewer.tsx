@@ -336,7 +336,7 @@ export default function MushafViewer() {
           className="px-4 py-2 bg-natural-bg hover:bg-natural-moss/10 disabled:opacity-50 text-natural-text rounded-xl text-xs font-semibold flex items-center gap-1.5 cursor-pointer select-none border border-natural-border/30"
         >
           <ChevronLeft className="h-4 w-4" />
-          <span>Next Page (Left)</span>
+          <span>Previous</span>
         </button>
 
         <span className="text-xs font-bold text-natural-text-sub font-mono tracking-widest">
@@ -348,7 +348,7 @@ export default function MushafViewer() {
           disabled={currentPage === 604}
           className="px-4 py-2 bg-natural-bg hover:bg-natural-moss/10 disabled:opacity-50 text-natural-text rounded-xl text-xs font-semibold flex items-center gap-1.5 cursor-pointer select-none border border-natural-border/30"
         >
-          <span>Previous Page (Right)</span>
+          <span>Next</span>
           <ChevronRight className="h-4 w-4" />
         </button>
       </div>
