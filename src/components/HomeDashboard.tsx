@@ -235,7 +235,7 @@ export default function HomeDashboard({
       const response = await fetch(`https://api.alquran.cloud/v1/search/${encodeURIComponent(searchQuery)}/all/en`);
       const data = await response.json();
       
-      if (data && data.data && data.data.matchCount > 0) {
+      if (data?.data?.matches?.length > 0) {
         // Grab top 10 results for rich user experience and fast rendering
         const matches = data.data.matches.slice(0, 10);
         
