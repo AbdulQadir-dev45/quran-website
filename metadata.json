@@ -1,0 +1,8 @@
+{
+  "name": "Quran Website",
+  "description": "An elegant Quran reading and listening website featuring Urdu and English translations, Mushaf page viewer, Tilawat player, daily verses, prayer times, and a search engine.",
+  "requestFramePermissions": [
+    "geolocation"
+  ],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
