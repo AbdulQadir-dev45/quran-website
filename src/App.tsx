@@ -254,7 +254,7 @@ export default function App() {
       </main>
 
       {/* FOOTER AREA */}
-      <footer className="w-full bg-natural-forest text-natural-bg/90 border-t border-natural-border/20 py-10 px-4 mt-16 pb-28 md:pb-24 relative overflow-hidden">
+      <footer className="w-full bg-natural-forest text-natural-bg/90 border-t border-natural-border/20 py-10 px-4 mt-16 pb-28 md:pb-8 relative overflow-hidden">
         {/* Foot arabesque background subtle decor */}
         <div className="absolute inset-0 arabesque-bg opacity-5 pointer-events-none" />
         
@@ -271,8 +271,8 @@ export default function App() {
           </div>
 
           <div className="md:col-span-3 space-y-3">
-            <h4 className="font-bold text-white uppercase tracking-wider text-[10px] text-natural-gold">Quick Navigation Pages</h4>
-            <div className="grid grid-cols-2 gap-2 text-[11px]">
+            <h4 className="font-bold text-white uppercase tracking-wider text-[11px] text-natural-gold">Quick Navigation Pages</h4>
+            <div className="grid grid-cols-2 gap-2 text-[12px]">
               <button onClick={() => handleNavigate("home")} className="text-left hover:text-white transition-colors cursor-pointer">Home</button>
               <button onClick={() => handleNavigate("mushaf")} className="text-left hover:text-white transition-colors cursor-pointer">Mushaf Pages</button>
               <button onClick={() => handleNavigate("urdu")} className="text-left hover:text-white transition-colors cursor-pointer">Urdu (اردو)</button>
@@ -282,18 +282,18 @@ export default function App() {
           </div>
 
           <div className="md:col-span-5 text-right space-y-3 font-arabic">
-            <h4 className="font-bold text-white uppercase tracking-widest text-[9px] text-natural-gold font-sans">Quranic Supplication (Dua)</h4>
+            <h4 className="font-bold text-white uppercase tracking-widest text-[11px] text-natural-gold font-sans">Quranic Supplication (Dua)</h4>
             <span className="text-2xl md:text-3xl text-natural-gold font-medium block leading-normal pt-1 hover:text-white transition-colors">
               اللّهُمَّ اجْعَلِ القُرْآنَ رَبِيعَ قُلُوبِنَا وَنُورَ صُدُورِنَا
             </span>
-            <p className="text-[10px] text-[#a69d8a] font-sans uppercase tracking-widest mt-1 block">
+            <p className="text-[10.5px] text-[#a69d8a] font-sans uppercase tracking-widest mt-1 block">
               "O Allah, make the Quran the spring of our hearts and the light of our chests"
             </p>
           </div>
 
         </div>
 
-        <div className="max-w-7xl mx-auto border-t border-[#3d4f3e] mt-8 pt-6 text-center text-[10px] text-[#a69d8a] tracking-wider relative z-10 flex flex-col sm:flex-row justify-between items-center gap-4">
+        <div className="max-w-7xl mx-auto border-t border-[#3d4f3e] mt-6 pt-6 text-center text-[12px] text-[#a69d8a] tracking-wider relative z-10 flex flex-col sm:flex-col justify-between items-center gap-4">
           <p>© 2026 Al-Quran Website • Holy Quran Translation & Recitals Hub.</p>
           <p className="flex items-center gap-1.5 font-sans justify-center">
             Developed with dedication & <Heart className="h-3.5 w-3.5 text-rose-500 fill-rose-500 animate-pulse" /> for the Global Islamic Ummah.
