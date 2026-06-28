@@ -412,7 +412,7 @@ export default function SurahTranslationViewer({
                   </div>
 
                   {/* Arabic text with beautiful Amiri Font layout */}
-                  <div className="text-right leading-loose pt-2 relative z-10" dir="rtl">
+                  <div className="text-right leading-[3.8] md:leading-[5] pt-2 relative z-10" dir="rtl">
                     <span className="font-arabic text-3xl md:text-4xl text-natural-text tracking-wider">
                       {ayah.text}
                     </span>
