@@ -105,7 +105,11 @@ export default function TilawatPlayer({
         </div>
 
         {/* Searching input bar */}
-        <div className="md:col-span-6 relative mt-6">
+        <div className="md:col-span-6 relative mt-2 md:mt-0 flex flex-col gap-2">
+          <label className="text-xs font-bold font-mono text-natural-text flex items-center gap-1 uppercase tracking-wider">
+            <Search className="h-4 w-4 text-natural-moss" />
+            Search Surahs:
+          </label>
           <input
             type="text"
             placeholder="Search within Surahs (e.g., Al-Kahf, Ar-Rahman)..."
@@ -113,7 +117,7 @@ export default function TilawatPlayer({
             onChange={(e) => setSearchQuery(e.target.value)}
             className="w-full text-xs pl-10 pr-4 py-2 rounded-xl border border-natural-border/50 bg-natural-bg text-natural-text placeholder:text-natural-text-sub/50 focus:outline-hidden focus:ring-1 focus:ring-natural-moss"
           />
-          <Search className="absolute left-3.5 top-2.5 h-4 w-4 text-natural-text-sub/50" />
+          <Search className="absolute left-3.5 top-8.5 h-4 w-4 text-natural-text-sub/50" />
         </div>
       </div>
 
