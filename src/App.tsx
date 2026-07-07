@@ -20,15 +20,16 @@ export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   // Global Theme config
-  const [darkMode, setDarkMode] = useState<boolean>(true);
+  const [darkMode, setDarkMode] = useState<boolean>(false);
 
   // Load theme preference on mount
   useEffect(() => {
     const savedTheme = localStorage.getItem("quran_app_theme");
-    if (savedTheme === "light") {
-      setDarkMode(false);
-    } else {
+
+    if (savedTheme === "dark") {
       setDarkMode(true);
+    } else {
+      setDarkMode(false); // Default Light Mode
     }
   }, []);
 
