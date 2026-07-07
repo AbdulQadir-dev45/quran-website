@@ -275,6 +275,20 @@ export default function HomeDashboard({
     }
   };
 
+    const convertTo12Hour = (time: string) => {
+    if (!time) return "";
+
+    // Agar API extra data bheje (e.g. "05:10 (PKT)")
+    const cleanTime = time.split(" ")[0];
+
+    const [hour, minute] = cleanTime.split(":").map(Number);
+
+    const period = hour >= 12 ? "PM" : "AM";
+    const hour12 = hour % 12 || 12;
+
+    return `${hour12}:${minute.toString().padStart(2, "0")} ${period}`;
+  };
+
   const getNextPrayerCountdownStr = (mins: number) => {
     const h = Math.floor(mins / 60);
     const m = mins % 60;
@@ -300,59 +314,58 @@ export default function HomeDashboard({
 
       {/* Hero Welcome banner */}
       <section className="relative overflow-hidden rounded-[32px] bg-linear-to-br from-natural-forest to-natural-pine border border-natural-border/20 px-6 py-12 text-white shadow-xl md:px-12 md:py-16">
-          {/* Abstract shapes representing majestic lights */}
-          <div className="absolute top-0 right-0 h-96 w-96 -translate-y-20 translate-x-20 rounded-full bg-natural-moss/20 blur-3xl" />
-          <div className="absolute bottom-0 left-0 h-64 w-64 translate-y-20 -translate-x-20 rounded-full bg-natural-gold/10 blur-2xl" />
+        {/* Abstract shapes representing majestic lights */}
+        <div className="absolute top-0 right-0 h-96 w-96 -translate-y-20 translate-x-20 rounded-full bg-natural-moss/20 blur-3xl" />
+        <div className="absolute bottom-0 left-0 h-64 w-64 translate-y-20 -translate-x-20 rounded-full bg-natural-gold/10 blur-2xl" />
 
-          <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
-          <div className="space-y-4 text-left">
-            <div className="inline-flex items-center space-x-2 rounded-full border border-natural-gold/30 bg-black/20 px-3 py-1 text-xs font-semibold backdrop-blur-md text-natural-gold">
-              <Compass className="h-3 w-3 animate-spin-slow" />
-              <span>Islamic Hub & Al-Quran Explorer</span>
-            </div>
-
-            <h1 className="text-3xl font-bold tracking-tight md:text-5xl font-sans">
-              Explore the Wisdom <br />
-              <span className="text-natural-gold font-serif">
-                of the Holy Qur'an
-              </span>
-            </h1>
-
-            <p className="text-sm md:text-base leading-relaxed text-natural-bg/90">
-              Read complete Mushaf pages, listen to master reciters,
-              explore translation comparisons in Urdu & English,
-              and keep updated with precise daily prayer timings.
-            </p>
-
-            <p className="text-xs text-natural-bg/80 font-mono tracking-wide">
-              {getGregorianDateString()}
-            </p>
+        <div className="relative z-10 grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+         <div className="space-y-4 text-left">
+          <div className="inline-flex items-center space-x-2 rounded-full border border-natural-gold/30 bg-black/20 px-3 py-1 text-xs font-semibold backdrop-blur-md text-natural-gold">
+            <Compass className="h-3 w-3 animate-spin-slow" />
+            <span>Islamic Hub & Al-Quran Explorer</span>
           </div>
+
+          <h1 className="text-3xl font-bold tracking-tight md:text-5xl font-sans">
+            Explore the Wisdom <br />
+            <span className="text-natural-gold font-serif">
+              of the Holy Qur'an
+            </span>
+          </h1>
+
+          <p className="text-sm md:text-base leading-relaxed text-natural-bg/90">
+            Read complete Mushaf pages, listen to master reciters,
+            explore translation comparisons in Urdu & English,
+            and keep updated with precise daily prayer timings.
+          </p>
+
+          <p className="text-xs text-natural-bg/80 font-mono tracking-wide">
+            {getGregorianDateString()}
+          </p>
+        </div>
 
           {/* Quick Stats/Dua banner in Arabic */}
-          <div className="flex justify-end items-center">
-            <div className="text-right">
-              <h2 className="font-arabic text-3xl md:text-5xl text-natural-gold leading-relaxed">
-                اللّهُمَّ اجْعَلِ القُرْآنَ رَبِيعَ قُلُوبِنَا
-              </h2>
+        <div className="flex justify-end items-center">
+          <div className="text-right">
+            <h2 className="font-arabic text-3xl md:text-5xl text-natural-gold leading-relaxed">
+              اللّهُمَّ اجْعَلِ القُرْآنَ رَبِيعَ قُلُوبِنَا
+            </h2>
 
-              <p className="mt-3 text-xs uppercase tracking-[2px] text-natural-bg/60 font-mono">
-                "O Allah, Make the Quran the Spring of Our Hearts"
-              </p>
-              <p className="mt-3 text-xxs uppercase tracking-[2px] text-natural-bg/60 font-mono">
-                "اے اللہ! قرآن کو ہمارے دلوں کی بہار بنا دے۔"
-              </p>
-
-              <div className="mt-4 border-t border-natural-gold/100 pt-4">
-                <div className="flex justify-end">
-                  <span className="rounded-full bg-natural-gold/10 border border-natural-gold/60 px-4 py-2 text-sm text-natural-bg/80 font-arabic">
-                    حوالہ: مسند احمد: 3712 &nbsp;|&nbsp; صحیح ابن حبان: 972
-                  </span>
-                </div>
+            <p className="mt-3 text-xs uppercase tracking-[2px] text-natural-bg/60 font-mono">
+              "O Allah, Make the Quran the Spring of Our Hearts"
+            </p>
+            <p className="mt-3 text-xxs uppercase tracking-[2px] text-natural-bg/60 font-mono">
+              "اے اللہ! قرآن کو ہمارے دلوں کی بہار بنا دے۔"
+            </p>
+            
+            <div className="mt-4 border-t border-natural-gold/100 pt-4">
+              <div className="flex justify-end">
+                <span className="rounded-full bg-natural-gold/10 border border-natural-gold/60 px-4 py-2 text-sm text-natural-bg/80 font-arabic">
+                  حوالہ: مسند احمد: 3712 &nbsp;|&nbsp; صحیح ابن حبان: 972
+                </span>
               </div>
-              
             </div>
           </div>
+        </div>
         </div>
       </section>
 
@@ -563,7 +576,7 @@ export default function HomeDashboard({
               {nextPrayerInfo && (
                 <div className="space-y-1">
                   <h4 className="text-xs font-medium text-natural-text-sub">
-                    Next Prayer: <span className="font-bold text-natural-moss">{nextPrayerInfo.name}</span> at <span className="font-bold">{nextPrayerInfo.time}</span>
+                   Next Prayer:<span className="font-bold text-natural-moss">{nextPrayerInfo.name}</span>{" "}at{" "}<span className="font-bold">{convertTo12Hour(nextPrayerInfo.time)}</span>
                   </h4>
                   <p className="text-xl font-extrabold tracking-tight text-natural-text font-mono animate-pulse">
                     in {getNextPrayerCountdownStr(nextPrayerInfo.minutesLeft)}
@@ -630,7 +643,9 @@ export default function HomeDashboard({
                     }`}
                   >
                     <span>{pr.name}</span>
-                    <span className="font-mono">{pr.time}</span>
+                    <span className="font-mono">
+                      {convertTo12Hour(pr.time)}
+                    </span>
                   </div>
                 ))}
               </div>
