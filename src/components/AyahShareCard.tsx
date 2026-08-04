@@ -90,15 +90,15 @@ const AyahShareCard: React.FC<AyahShareCardProps> = ({
             src={logo}
             alt="Logo"
             style={{
-            width: 90,
-            height: 90,
+            width: 135,
+            height: 135,
             }}
         />
 
         <h2
             style={{
             margin: 0,
-            fontSize: 42,
+            fontSize: 40,
             fontWeight: 700,
             letterSpacing: 1,
             }}
@@ -121,7 +121,7 @@ const AyahShareCard: React.FC<AyahShareCardProps> = ({
             width: "100%",
             height: 2,
             background: "rgba(255,255,255,.2)",
-            margin: "35px 0",
+            margin: "30px 0",
             }}
         />
 
@@ -182,7 +182,7 @@ const AyahShareCard: React.FC<AyahShareCardProps> = ({
             width: "100%",
             height: 2,
             background: "rgba(255,255,255,.15)",
-            margin: "40px 0",
+            margin: "30px 0",
             }}
         />
 
@@ -212,7 +212,7 @@ const AyahShareCard: React.FC<AyahShareCardProps> = ({
         {/* ===== Bottom Section ===== */}
         <div
         style={{
-            marginTop: 50,
+            marginTop: 40,
             display: "flex",
             justifyContent: "space-between",
             alignItems: "center",
