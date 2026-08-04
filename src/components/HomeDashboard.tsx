@@ -6,6 +6,7 @@
 import React, { useState, useEffect } from "react";
 import { Search, Compass, BookOpen, Volume2, Moon, Sun, ArrowRight, Play, Pause, MapPin, RefreshCw, BookmarkCheck } from "lucide-react";
 import { dailyVersesList, DailyVerse } from "../data/dailyVerses";
+import ShareButton from "./ShareButton";
 import { defaultCitiesPrayerTimes, CityPrayerTimes } from "../data/prayerTimes";
 import { PrayerTimes, SearchResult } from "../types";
 
@@ -470,7 +471,7 @@ export default function HomeDashboard({
       <div className="grid lg:grid-cols-12 gap-6 relative z-10">
         
         {/* Daily Verses card widget */}
-        <section className="lg:col-span-7 bg-natural-card border border-natural-border/50 rounded-[32px] p-6 md:p-8 flex flex-col justify-between shadow-xs relative overflow-hidden group">
+        <section className="lg:col-span-7 bg-natural-card border border-natural-border/50 rounded-[32px] p-6 md:p-8 flex flex-col justify-between shadow-xs relative overflow-visible group">
           <div className="absolute top-0 right-0 h-32 w-32 bg-natural-moss/10 rounded-full blur-2xl -translate-y-10 translate-x-10 group-hover:bg-natural-moss/20 transition-colors" />
           
           <div className="space-y-5 relative z-10">
@@ -515,8 +516,7 @@ export default function HomeDashboard({
               <span>Ayah [ {dailyVerse.surahNumber} : {dailyVerse.ayahNumber} ]</span>
             </p>
           </div>
-
-          <div className="mt-6 flex flex-wrap justify-between items-center gap-4 pt-4 border-t border-natural-border/40 relative z-10">
+          <div className="mt-6 flex flex-wrap md:flex-nowrap items-center gap-3 pt-4 border-t border-natural-border/40 relative z-10">
             <button
               onClick={handlePlayVerse}
               className="px-5 py-2.5 bg-natural-moss hover:bg-natural-forest text-white rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
@@ -533,6 +533,17 @@ export default function HomeDashboard({
                 </>
               )}
             </button>
+
+            <div className="flex justify-center">
+              <ShareButton
+                arabic={dailyVerse.arabic}
+                urdu={dailyVerse.urdu}
+                english={dailyVerse.english}
+                surahName={dailyVerse.surahName}
+                surahNumber={dailyVerse.surahNumber}
+                ayahNumber={dailyVerse.ayahNumber}
+              />
+            </div>
 
             <button
               onClick={() => {
@@ -660,7 +671,7 @@ export default function HomeDashboard({
       </div>
 
       {/* Pages Navigation and Quick Links featured section */}
-      <section className="space-y-4 relative z-10 px-1">
+      <section className="space-y-4 relative z-0 px-1">
         <h3 className="text-lg font-bold text-natural-text flex items-center gap-2">
           <BookmarkCheck className="h-5 w-5 text-natural-gold animate-pulse" />
           Quick Pages Access
