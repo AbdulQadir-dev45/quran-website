@@ -41,7 +41,7 @@ const AyahShareCard: React.FC<AyahShareCardProps> = ({
         height: "1350px",
         background: "linear-gradient(180deg,#0f5132,#166534,#14532d,#0b3d2e)",
         color: "#fff",
-        padding: "70px",
+        padding: "60px",
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -92,7 +92,6 @@ const AyahShareCard: React.FC<AyahShareCardProps> = ({
             style={{
             width: 90,
             height: 90,
-            marginBottom: 20,
             }}
         />
 
@@ -142,7 +141,7 @@ const AyahShareCard: React.FC<AyahShareCardProps> = ({
         <div
         style={{
             textAlign: "center",
-            marginTop: 40,
+            marginTop: 30,
             marginBottom: 20,
             zIndex: 2,
         }}
@@ -235,7 +234,7 @@ const AyahShareCard: React.FC<AyahShareCardProps> = ({
                 marginBottom: 25,
             }}
             >
-            📖 {surahName} • Ayah {ayahNumber}
+            Surah {surahName} • Ayah {ayahNumber}
             </div>
 
             {/* Gregorian Date */}
@@ -317,11 +316,13 @@ const AyahShareCard: React.FC<AyahShareCardProps> = ({
         <div
             style={{
             marginTop: 8,
-            fontSize: 16,
+            fontSize: 18,
+            color: "#FFD700",
             opacity: 0.65,
             }}
         >
-            Urdu & English Hub
+            {/* Urdu & English Hub */}
+            https://quran-website-ochre.vercel.app/
         </div>
         </div>
 
