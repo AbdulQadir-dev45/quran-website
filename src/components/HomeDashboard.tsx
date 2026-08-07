@@ -6,7 +6,7 @@
 import React, { useState, useEffect } from "react";
 import { Search, Compass, BookOpen, Volume2, Moon, Sun, ArrowRight, Play, Pause, MapPin, RefreshCw, BookmarkCheck } from "lucide-react";
 import { dailyVersesList, DailyVerse } from "../data/dailyVerses";
-import ShareButton from "./ShareButton";
+import ShareButton from "./Share/ShareButton";
 import { defaultCitiesPrayerTimes, CityPrayerTimes } from "../data/prayerTimes";
 import { PrayerTimes, SearchResult } from "../types";
 

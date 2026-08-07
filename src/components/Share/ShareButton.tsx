@@ -1,7 +1,7 @@
 import React, { useRef, useState } from "react";
 import { toPng } from "html-to-image";
-import { Share2, ChevronDown, Download, Clipboard, Link, MessageCircle, Twitter, Facebook } from "lucide-react";
-import AyahShareCard from "./AyahShareCard";
+import { Share2} from "lucide-react";
+import ShareTemplateModal from "./ShareTemplateModal";
 
 interface ShareButtonProps {
   arabic: string;
@@ -23,6 +23,7 @@ export default function ShareButton({
   const cardRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
   const [openMenu, setOpenMenu] = useState(false);
+  const [showModal, setShowModal] = useState(false);
 
   // Change this to your website URL
   const WEBSITE_URL = window.location.origin;
@@ -167,98 +168,32 @@ export default function ShareButton({
   };
 
   return (
-    <>
+    <div>
 
       <div className="relative inline-block z-9999">
 
         <button
-          onClick={() => setOpenMenu(!openMenu)}
-          className="sm:w-auto flex items-center gap-2 rounded-xl bg-natural-moss hover:bg-natural-forest text-white px-5 py-2 font-semibold shadow-lg"
+          onClick={() => setShowModal(true)}
+          className="sm:w-auto flex items-center gap-2 rounded-xl bg-natural-moss hover:bg-natural-forest text-white px-5 py-2 font-semibold shadow-lg transition-all"
         >
           <Share2 className="h-4 w-4" />
-          Share
-          <ChevronDown className="h-4 w-4" />
+          Share Ayah
         </button>
 
-        {openMenu && (
-          <div className="absolute left-0 top-full mt-2 w-54 rounded-2xl bg-natural-card shadow-2xl z-99999" style={{ overflow: "visible"}}>
-            <button
-                onClick={handleDownload}
-                className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100"
-            >
-                <Download size={18}/>
-                Download Image
-            </button>
-
-            <button
-                onClick={handleWhatsapp}
-                className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100"
-            >
-                <MessageCircle size={18}/>
-                Share to WhatsApp
-            </button>
-
-            <button
-                onClick={handleFacebook}
-                className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100"
-            >
-                <Facebook size={18}/>
-                Share to Facebook
-            </button>
-
-            <button
-                onClick={handleTwitter}
-                className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100"
-            >
-                <Twitter size={18}/>
-                Share to X
-            </button>
-
-            <button
-                onClick={handleCopyImage}
-                className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100"
-            >
-                <Clipboard size={18}/>
-                Copy Image
-            </button>
-
-            <button
-                onClick={handleCopyLink}
-                className="flex items-center gap-3 w-full px-4 py-3 hover:bg-gray-100"
-            >
-                <Link size={18}/>
-                Copy Link
-            </button>
-
-          </div>
-        )}
-
       </div>
 
-      {/* Hidden Card */}
-      <div
-        style={{
-          position: "fixed",
-          inset: 0,
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          pointerEvents: "none",
-          opacity: 0,
-          zIndex: -9999,
-        }}
-      >
-        <div ref={cardRef}>
-          <AyahShareCard
-            arabic={arabic}
-            urdu={urdu}
-            english={english}
-            surahName={surahName}
-            surahNumber={surahNumber}
-            ayahNumber={ayahNumber}
-          />
-        </div>
-      </div>
-    </>
+      {showModal && (
+        <ShareTemplateModal
+          arabic={arabic}
+          urdu={urdu}
+          english={english}
+          surahName={surahName}
+          surahNumber={surahNumber}
+          ayahNumber={ayahNumber}
+          onClose={() => setShowModal(false)}
+        />
+      )}
+
+    </div>
   );
 }
