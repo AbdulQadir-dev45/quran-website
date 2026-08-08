@@ -1,7 +1,29 @@
 import React from "react";
 import QRCode from "react-qr-code";
 import moment from "moment-hijri";
-import { TemplateProps } from "../types";
+
+export interface TemplateProps {
+  arabic: string;
+  urdu: string;
+  english: string;
+
+  surahName: string;
+  surahNumber: number;
+  ayahNumber: number;
+
+  arabicFontSize: number;
+  urduFontSize: number;
+  englishFontSize: number;
+
+  showUrdu?: boolean;
+  showEnglish?: boolean;
+
+  websiteUrl?: string;
+  brandName?: string;
+
+  showQr?: boolean;
+  showBismillah?: boolean;
+}
 
 const Template4: React.FC<TemplateProps> = ({
   arabic,
@@ -21,6 +43,8 @@ const Template4: React.FC<TemplateProps> = ({
 
   showQr = true,
   showBismillah = true,
+  showUrdu = true,
+  showEnglish = true,
 }) => {
   const today = new Date();
 

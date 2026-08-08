@@ -9,8 +9,8 @@ export interface TemplateRendererProps {
   template: number;
 
   arabic: string;
-  urdu: string;
-  english: string;
+  urdu?: string;
+  english?: string;
 
   surahName: string;
   surahNumber: number;
@@ -25,6 +25,9 @@ export interface TemplateRendererProps {
 
   showQr?: boolean;
   showBismillah?: boolean;
+
+  showUrdu?: boolean;
+  showEnglish?: boolean;
 }
 
 const TemplateRenderer: React.FC<TemplateRendererProps> = (props) => {

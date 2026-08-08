@@ -15,6 +15,9 @@ export interface TemplateProps {
   urduFontSize: number;
   englishFontSize: number;
 
+  showUrdu?: boolean;
+  showEnglish?: boolean;
+
   websiteUrl?: string;
   brandName?: string;
 
@@ -40,6 +43,8 @@ const Template2: React.FC<TemplateProps> = ({
 
   showQr = true,
   showBismillah = true,
+  showUrdu = true,
+  showEnglish = true,
 }) => {
   const today = new Date();
 
@@ -224,49 +229,55 @@ const Template2: React.FC<TemplateProps> = ({
           }}
         />
 
-        {/* Urdu Card */}
-        <div
-          style={{
-            width: "100%",
-            boxSizing: "border-box",
-          }}
-        >
+        {/* Urdu */}
+
+        {showUrdu && (
           <div
             style={{
-              background: "rgba(201,162,39,.08)",
-              border: "1px solid rgba(201,162,39,.20)",
-              borderRadius: 24,
-              padding: "20px 20px",
+              width: "100%",
+              boxSizing: "border-box",
             }}
           >
             <div
               style={{
-                color: "#C9A227",
-                fontSize: 20,
-                letterSpacing: 3,
-                textTransform: "uppercase",
-                marginBottom: 18,
-                fontWeight: 700,
+                background: "rgba(201,162,39,.08)",
+                border: "1px solid rgba(201,162,39,.20)",
+                borderRadius: 24,
+                padding: "20px 20px",
               }}
             >
-              Urdu Translation
-            </div>
+              <div
+                style={{
+                  color: "#C9A227",
+                  fontSize: 20,
+                  letterSpacing: 3,
+                  textTransform: "uppercase",
+                  marginBottom: 18,
+                  fontWeight: 700,
+                }}
+              >
+                Urdu Translation
+              </div>
 
-            <div
-              style={{
-                fontFamily: "'Noto Nastaliq Urdu', serif",
-                fontSize: urduFontSize,
-                lineHeight: 2,
-                color: "#F8F8F8",
-                direction: "rtl",
-              }}
-            >
-              {urdu}
+              <div
+                style={{
+                  fontFamily: "'Noto Nastaliq Urdu', serif",
+                  fontSize: urduFontSize,
+                  lineHeight: 1.6,
+                  letterSpacing: 3,
+                  color: "#F8F8F8",
+                  direction: "rtl",
+                }}
+              >
+                {urdu}
+              </div>
             </div>
           </div>
-        </div>
+        )}
 
-        {/* English Card */}
+        {/* English */}
+
+        {showEnglish && (
         <div
           style={{
             width: "100%",
@@ -307,6 +318,7 @@ const Template2: React.FC<TemplateProps> = ({
             </div>
           </div>
         </div>
+      )}
       
       </div>
 
