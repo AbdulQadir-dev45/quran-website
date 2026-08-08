@@ -15,9 +15,6 @@ export interface TemplateProps {
   urduFontSize: number;
   englishFontSize: number;
 
-  showUrdu?: boolean;
-  showEnglish?: boolean;
-
   websiteUrl?: string;
   brandName?: string;
 
@@ -43,9 +40,6 @@ const Template1: React.FC<TemplateProps> = ({
 
   showQr = true,
   showBismillah = true,
-
-  showUrdu = true,
-  showEnglish = true,
 }) => {
   const today = new Date();
 
@@ -244,29 +238,26 @@ const Template1: React.FC<TemplateProps> = ({
         />
 
         {/* Urdu Translation */}
-        {showUrdu && (
+        <div
+          style={{
+            width: "100%",
+            padding: "0 30px",
+          }}
+        >
           <div
             style={{
-              width: "100%",
-              padding: "0 30px",
+              fontFamily: "'Noto Nastaliq Urdu', serif",
+              fontSize: urduFontSize,
+              letterSpacing: 2,
+              lineHeight: 1.6,
+              color: "#F8F8F8",
             }}
           >
-            <div
-              style={{
-                fontFamily: "'Noto Nastaliq Urdu', serif",
-                fontSize: urduFontSize,
-                letterSpacing: 2,
-                lineHeight: 1.6,
-                color: "#F8F8F8",
-              }}
-            >
-              {urdu}
-            </div>
+            {urdu}
           </div>
-        )}
+        </div>
 
         {/* English Translation */}
-        {showEnglish && (
         <div
           style={{
             marginTop: 35,
@@ -286,7 +277,6 @@ const Template1: React.FC<TemplateProps> = ({
             "{english}"
           </div>
         </div>
-      )}
       </div>
 
       {/* ================= FOOTER ================= */}

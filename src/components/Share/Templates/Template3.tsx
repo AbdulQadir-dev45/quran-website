@@ -15,9 +15,6 @@ export interface TemplateProps {
   urduFontSize: number;
   englishFontSize: number;
 
-  showUrdu?: boolean;
-  showEnglish?: boolean;
-
   websiteUrl?: string;
   brandName?: string;
 
@@ -43,8 +40,6 @@ const Template3: React.FC<TemplateProps> = ({
 
   showQr = true,
   showBismillah = true,
-  showUrdu = true,
-  showEnglish = true,
 }) => {
   const today = new Date();
 
