@@ -31,7 +31,6 @@ const Template4: React.FC<TemplateProps> = ({
   english,
 
   surahName,
-  surahNumber,
   ayahNumber,
 
   arabicFontSize,
@@ -55,15 +54,11 @@ const Template4: React.FC<TemplateProps> = ({
     year: "numeric",
   });
 
-  let hijri = "";
-  try {
-    // moment-hijri extension
-    hijri = (moment as unknown as () => { format: (f: string) => string })().format("iD iMMMM iYYYY");
-  } catch {
-    hijri = "1447 Hijri";
-  }
+  const hijri = moment()
+  .subtract(1, "day")
+  .format("iD iMMMM iYYYY");
 
-  const shareUrl = `${websiteUrl}/english?surah=${surahNumber}&ayah=${ayahNumber}`;
+  const shareUrl = `${websiteUrl}`;
 
   return (
     <div
@@ -259,76 +254,81 @@ const Template4: React.FC<TemplateProps> = ({
         />
 
         {/* Urdu Card */}
-        <div
-          style={{
-            width: "100%",
-            background: "rgba(255,255,255,.45)",
-            borderRadius: 24,
-            padding: "20px 20px",
-            border: "1px solid rgba(139,107,63,.18)",
-            boxSizing: "border-box"
-          }}
-        >
+        {showUrdu && (
           <div
             style={{
-              color: "#8B6B3F",
-              fontSize: 18,
-              letterSpacing: 3,
-              fontWeight: 700,
-              marginBottom: 10
+              width: "100%",
+              background: "rgba(255,255,255,.45)",
+              borderRadius: 24,
+              padding: "20px 20px",
+              border: "1px solid rgba(139,107,63,.18)",
+              boxSizing: "border-box",
             }}
           >
-            URDU TRANSLATION
-          </div>
+            <div
+              style={{
+                color: "#8B6B3F",
+                fontSize: 18,
+                letterSpacing: 3,
+                fontWeight: 700,
+                marginBottom: 10,
+              }}
+            >
+              URDU TRANSLATION
+            </div>
 
-          <div
-            style={{
-              fontFamily: "'Noto Nastaliq Urdu', serif",
-              fontSize: urduFontSize,
-              color: "#4A3728",
-              lineHeight: 1.6,
-              direction: "rtl"
-            }}
-          >
-            {urdu}
+            <div
+              style={{
+                fontFamily: "'Noto Nastaliq Urdu', serif",
+                fontSize: urduFontSize,
+                color: "#4A3728",
+                lineHeight: 1.6,
+                direction: "rtl",
+              }}
+            >
+              {urdu}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* English Card */}
-        <div
-          style={{
-            width: "100%",
-            marginTop: 16,
-            background: "rgba(255,255,255,.35)",
-            borderRadius: 24,
-            padding: "20px 20px",
-            border: "1px solid rgba(139,107,63,.18)",
-            boxSizing: "border-box"
-          }}
-        >
+        {showEnglish && (
           <div
             style={{
-              color: "#8B6B3F",
-              fontSize: 18,
-              letterSpacing: 3,
-              fontWeight: 700,
-              marginBottom: 10
+              width: "100%",
+              marginTop: 16,
+              background: "rgba(255,255,255,.35)",
+              borderRadius: 24,
+              padding: "20px 20px",
+              border: "1px solid rgba(139,107,63,.18)",
+              boxSizing: "border-box",
             }}
           >
-            ENGLISH TRANSLATION
-          </div>
+            <div
+              style={{
+                color: "#8B6B3F",
+                fontSize: 18,
+                letterSpacing: 3,
+                fontWeight: 700,
+                marginBottom: 10,
+              }}
+            >
+              ENGLISH TRANSLATION
+            </div>
 
-          <div
-            style={{
-              fontSize: englishFontSize,
-              color: "#5A4633",
-              lineHeight: 1.5,
-              fontStyle: "italic"
-            }}
-          >
-            "{english}"
+            <div
+              style={{
+                fontSize: englishFontSize,
+                color: "#5A4633",
+                lineHeight: 1.5,
+                fontStyle: "italic",
+              }}
+            >
+              "{english}"
+            </div>
           </div>
-        </div>
+        )}
+
       </div>
 
       {/* Footer */}

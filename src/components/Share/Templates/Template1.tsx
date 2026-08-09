@@ -31,7 +31,6 @@ const Template1: React.FC<TemplateProps> = ({
   english,
 
   surahName,
-  surahNumber,
   ayahNumber,
 
   arabicFontSize,
@@ -56,9 +55,11 @@ const Template1: React.FC<TemplateProps> = ({
     year: "numeric",
   });
 
-  const hijri = moment().format("iD iMMMM iYYYY");
+  const hijri = moment()
+  .subtract(1, "day")
+  .format("iD iMMMM iYYYY");
 
-  const shareUrl = `${websiteUrl}/english?surah=${surahNumber}&ayah=${ayahNumber}`;
+  const shareUrl = `${websiteUrl}`;
 
   return (
     <div

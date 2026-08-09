@@ -31,7 +31,6 @@ const Template2: React.FC<TemplateProps> = ({
   english,
 
   surahName,
-  surahNumber,
   ayahNumber,
 
   arabicFontSize,
@@ -55,9 +54,11 @@ const Template2: React.FC<TemplateProps> = ({
     year: "numeric",
   });
 
-  const hijri = moment().format("iD iMMMM iYYYY");
+  const hijri = moment()
+  .subtract(1, "day")
+  .format("iD iMMMM iYYYY");
 
-  const shareUrl = `${websiteUrl}/english?surah=${surahNumber}&ayah=${ayahNumber}`;
+  const shareUrl = `${websiteUrl}`;
 
   return (
     <div
@@ -407,15 +408,15 @@ const Template2: React.FC<TemplateProps> = ({
       </div>
 
       <div
-            style={{
-              marginTop: 8,
-              color: "rgba(255,255,255,.70)",
-              fontSize: 20,
-              textAlign: "center",
-            }}
-          >
-            © {new Date().getFullYear()} {brandName}
-          </div>
+        style={{
+          marginTop: 8,
+          color: "rgba(255,255,255,.70)",
+          fontSize: 20,
+          textAlign: "center",
+        }}
+      >
+        © {new Date().getFullYear()} {brandName}
+      </div>
 
       {/* Gold Divider */}
       <div

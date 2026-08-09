@@ -48,8 +48,6 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
   // Optional toggles
   const [showUrdu, setShowUrdu] = useState<boolean>(true);
   const [showEnglish, setShowEnglish] = useState<boolean>(true);
-  const [showBismillah, setShowBismillah] = useState<boolean>(true);
-  const [showWatermark, setShowWatermark] = useState<boolean>(true);
 
   // Status & Feedback states
   const [loading, setLoading] = useState<boolean>(false);
@@ -105,68 +103,200 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
     }, 3000);
   };
 
-  /* ================= IMAGE GENERATOR ================= */
+
+/* ================= IMAGE GENERATOR ================= */
   const generateImage = async () => {
     const exportNode = document.getElementById("ayah-card-export");
-    if (!exportNode) return null;
+
+    if (!exportNode) {
+      showToast("Export card not found.");
+      return null;
+    }
 
     try {
-      const dataUrl = await toPng(exportNode, {
+      // Wait for all fonts
+      if (document.fonts?.ready) {
+        await document.fonts.ready;
+      }
+
+      // Wait for rendering
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      // Clone the card so preview scaling does not affect export
+      const clone = exportNode.cloneNode(true) as HTMLElement;
+
+      clone.id = "ayah-card-export-clone";
+
+      clone.style.position = "fixed";
+      clone.style.left = "-10000px";
+      clone.style.top = "0";
+
+      clone.style.width = "1080px";
+      clone.style.height = "1350px";
+
+      clone.style.transform = "none";
+      clone.style.transformOrigin = "top left";
+
+      clone.style.margin = "0";
+      clone.style.padding = exportNode.style.padding;
+
+      clone.style.zIndex = "-1";
+
+      document.body.appendChild(clone);
+
+      // Give browser time to render cloned card
+      await new Promise((resolve) => setTimeout(resolve, 300));
+
+      const dataUrl = await toPng(clone, {
         cacheBust: true,
-        pixelRatio: 2.5,
-        backgroundColor: "#000000",
+
+        width: 1080,
+        height: 1350,
+
+        pixelRatio: 1,
+
+        backgroundColor: "transparent",
+
+        style: {
+          width: "1080px",
+          height: "1350px",
+          transform: "none",
+          transformOrigin: "top left",
+        },
       });
 
-      const res = await fetch(dataUrl);
-      const blob = await res.blob();
-      const file = new File([blob], `Surah-${surahNumber}-${ayahNumber}.png`, {
-        type: "image/png",
-      });
+      // Remove clone
+      document.body.removeChild(clone);
 
-      return { dataUrl, blob, file };
-    } catch (err) {
-      console.error("Failed to generate image:", err);
+      // Convert Data URL → Blob
+      const response = await fetch(dataUrl);
+      const blob = await response.blob();
+
+      const file = new File(
+        [blob],
+        `Surah-${surahNumber}-${ayahNumber}.png`,
+        {
+          type: "image/png",
+        }
+      );
+
+      return {
+        dataUrl,
+        blob,
+        file,
+      };
+    } catch (error) {
+      console.error("Image generation failed:", error);
+
+      const clone = document.getElementById(
+        "ayah-card-export-clone"
+      );
+
+      if (clone) {
+        clone.remove();
+      }
+
       showToast("Could not generate image. Please try again.");
+
       return null;
     }
   };
 
-  /* ================= DOWNLOAD ================= */
+/* ================= DOWNLOAD ================= */
   const handleDownload = async () => {
+    if (loading) return;
+
     try {
       setLoading(true);
+
       const image = await generateImage();
+
       if (!image) return;
 
-      const a = document.createElement("a");
-      a.href = image.dataUrl;
-      a.download = `Surah-${surahName}-${surahNumber}_${ayahNumber}.png`;
-      a.click();
+      // Create temporary Blob URL
+      const blobUrl = URL.createObjectURL(image.blob);
+
+      const link = document.createElement("a");
+
+      link.href = blobUrl;
+      link.download = `Surah-${surahName}-${surahNumber}-${ayahNumber}.png`;
+
+      // Important for Android Chrome
+      link.style.display = "none";
+
+      document.body.appendChild(link);
+
+      link.click();
+
+      // Cleanup
+      setTimeout(() => {
+        document.body.removeChild(link);
+        URL.revokeObjectURL(blobUrl);
+      }, 1000);
+
       showToast("Image downloaded successfully!");
+    } catch (error) {
+      console.error("Download error:", error);
+      showToast("Download failed. Please try again.");
     } finally {
       setLoading(false);
     }
   };
 
-  /* ================= SHARE ================= */
+/* ================= SHARE ================= */
   const handleShare = async () => {
-    setLoading(true);
+    if (loading) return;
+
     try {
+      setLoading(true);
+
       const image = await generateImage();
+
       if (!image) return;
 
-      if (navigator.canShare && navigator.canShare({ files: [image.file] })) {
+      // Android / iPhone native share
+      if (
+        typeof navigator.share === "function" &&
+        typeof navigator.canShare === "function" &&
+        navigator.canShare({
+          files: [image.file],
+        })
+      ) {
         await navigator.share({
           title: `Surah ${surahName} (${surahNumber}:${ayahNumber})`,
           text: `Read Surah ${surahName} [${surahNumber}:${ayahNumber}]\n${shareUrl}`,
           files: [image.file],
         });
-      } else {
-        await handleDownload();
+
+        return;
       }
-    } catch (e) {
-      // User cancelled share or browser not supported
-      console.log("Share skipped or unsupported", e);
+
+      // Fallback download
+      const blobUrl = URL.createObjectURL(image.blob);
+
+      const link = document.createElement("a");
+      link.href = blobUrl;
+      link.download = `Surah-${surahName}-${surahNumber}-${ayahNumber}.png`;
+
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+
+      setTimeout(() => {
+        URL.revokeObjectURL(blobUrl);
+      }, 1500);
+    } catch (error) {
+      console.error("Share error:", error);
+
+      // User pressed cancel on native share
+      if (
+        error instanceof DOMException &&
+        error.name === "AbortError"
+      ) {
+        return;
+      }
+
+      showToast("Unable to share image.");
     } finally {
       setLoading(false);
     }
@@ -328,10 +458,10 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
                 id="ayah-card-export"
                 ref={previewRef}
                 style={{
+                  width: "1080px",
+                  height: "1350px",
                   transform: `scale(${scale})`,
                   transformOrigin: "top left",
-                  width: `${1080 * scale}px`,
-                  height: `${1350 * scale}px`,
                 }}
                 className="absolute top-0 left-0"
               >
@@ -348,7 +478,6 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
                   englishFontSize={englishFontSize}
                   showUrdu={showUrdu}
                   showEnglish={showEnglish}
-                  showBismillah={showBismillah}
                 />
               </div>
             </div>
