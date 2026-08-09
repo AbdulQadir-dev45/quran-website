@@ -114,61 +114,34 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
     }
 
     try {
-      // Wait for all fonts
+      // Wait for fonts to finish loading
       if (document.fonts?.ready) {
         await document.fonts.ready;
       }
 
-      // Wait for rendering
+      // Small delay for mobile rendering
       await new Promise((resolve) => setTimeout(resolve, 300));
 
-      // Clone the card so preview scaling does not affect export
-      const clone = exportNode.cloneNode(true) as HTMLElement;
-
-      clone.id = "ayah-card-export-clone";
-
-      clone.style.position = "fixed";
-      clone.style.left = "-10000px";
-      clone.style.top = "0";
-
-      clone.style.width = "1080px";
-      clone.style.height = "1350px";
-
-      clone.style.transform = "none";
-      clone.style.transformOrigin = "top left";
-
-      clone.style.margin = "0";
-      clone.style.padding = exportNode.style.padding;
-
-      clone.style.zIndex = "-1";
-
-      document.body.appendChild(clone);
-
-      // Give browser time to render cloned card
-      await new Promise((resolve) => setTimeout(resolve, 300));
-
-      const dataUrl = await toPng(clone, {
+      const dataUrl = await toPng(exportNode, {
         cacheBust: true,
 
+        // High quality
+        pixelRatio: 1,
+
+        // Keep transparent/background from template itself
+        backgroundColor: "transparent",
+
+        // Important for mobile
         width: 1080,
         height: 1350,
 
-        pixelRatio: 1,
-
-        backgroundColor: "transparent",
-
         style: {
-          width: "1080px",
-          height: "1350px",
           transform: "none",
           transformOrigin: "top left",
         },
       });
 
-      // Remove clone
-      document.body.removeChild(clone);
-
-      // Convert Data URL → Blob
+      // Convert PNG data URL to Blob
       const response = await fetch(dataUrl);
       const blob = await response.blob();
 
@@ -187,17 +160,7 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
       };
     } catch (error) {
       console.error("Image generation failed:", error);
-
-      const clone = document.getElementById(
-        "ayah-card-export-clone"
-      );
-
-      if (clone) {
-        clone.remove();
-      }
-
       showToast("Could not generate image. Please try again.");
-
       return null;
     }
   };
