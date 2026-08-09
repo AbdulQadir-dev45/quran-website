@@ -513,10 +513,10 @@ export default function HomeDashboard({
             <p className="text-xs font-semibold text-natural-text-sub flex items-center gap-1.5 font-mono">
               <span>Surah {dailyVerse.surahName}</span>
               <span>•</span>
-              <span>Ayah [ {dailyVerse.surahNumber} : {dailyVerse.ayahNumber} ]</span>
+              <span>Ayah [{dailyVerse.ayahNumber}]</span>
             </p>
           </div>
-          <div className="mt-6 flex flex-wrap md:flex-nowrap items-center gap-3 pt-4 border-t border-natural-border/40 relative z-10">
+          <div className="mt-4 flex flex-wrap md:flex-nowrap items-center gap-2 pt-4 border-t border-natural-border/40 relative z-10">
             <button
               onClick={handlePlayVerse}
               className="px-5 py-2.5 bg-natural-moss hover:bg-natural-forest text-white rounded-xl font-semibold text-sm transition-all flex items-center justify-center gap-2 shadow-xs cursor-pointer hover:scale-[1.02] active:scale-[0.98]"
@@ -548,7 +548,7 @@ export default function HomeDashboard({
             <button
               onClick={() => {
                 // Determine layout or transition and navigate to compilation surah context
-                onNavigate("english", { surah: dailyVerse.surahNumber });
+                onNavigate("urdu", { surah: dailyVerse.surahNumber });
               }}
               className="text-xs font-semibold text-natural-text-sub hover:text-natural-moss flex items-center gap-1.5 px-3 py-2 rounded-lg hover:bg-natural-bg transition-colors"
             >

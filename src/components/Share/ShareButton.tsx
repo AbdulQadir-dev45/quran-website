@@ -30,7 +30,7 @@ export default function ShareButton({
           className="sm:w-auto flex items-center gap-2 rounded-xl bg-natural-moss hover:bg-natural-forest text-white px-5 py-2 font-semibold shadow-lg transition-all"
         >
           <Share2 className="h-4 w-4" />
-          Share Ayah
+          Share
         </button>
       </div>
 
