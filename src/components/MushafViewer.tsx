@@ -222,7 +222,7 @@ export default function App() {
   };
   
   return (
-    <div className="min-h-screen bg-natural-bg text-natural-text p-4 sm:p-6 lg:p-2 selection:bg-natural-moss selection:text-white">
+    <div className="min-h-screen bg-natural-bg text-natural-text lg:p-1 selection:bg-natural-moss selection:text-white">
       <div className="max-w-7xl mx-auto space-y-6 animate-fade-in">
         {/* Header Title & Mode Selector */}
         <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 ">
@@ -646,7 +646,7 @@ export default function App() {
             disabled={currentPage === 604}
             className="px-4 py-2.5 bg-natural-bg hover:bg-natural-moss/10 disabled:opacity-40 text-natural-text rounded-xl text-xs font-semibold flex items-center gap-1.5 cursor-pointer select-none border border-natural-border/50 transition-colors"
           >
-            <span>Next Page</span>
+            <span>Next</span>
             <ChevronRight className="h-4 w-4" />
           </button>
 
@@ -662,7 +662,7 @@ export default function App() {
             className="px-4 py-2.5 bg-natural-bg hover:bg-natural-moss/10 disabled:opacity-40 text-natural-text rounded-xl text-xs font-semibold flex items-center gap-1.5 cursor-pointer select-none border border-natural-border/50 transition-colors"
           >
             <ChevronLeft className="h-4 w-4" />
-            <span>Previous Page</span>
+            <span>Previous</span>
           </button>
         </div>
       </div>

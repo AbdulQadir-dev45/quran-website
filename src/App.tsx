@@ -255,7 +255,7 @@ export default function App() {
       </main>
 
       {/* FOOTER AREA */}
-      <footer className="w-full bg-natural-forest text-natural-bg/90 border-t border-natural-border/20 py-10 px-4 mt-16 pb-28 md:pb-8 relative overflow-hidden">
+      <footer className="w-full bg-natural-forest text-natural-bg/90 border-t border-natural-border/20 py-10 px-4 mt-16 pb-6 md:pb-8 relative overflow-hidden">
         {/* Foot arabesque background subtle decor */}
         <div className="absolute inset-0 arabesque-bg opacity-5 pointer-events-none" />
         
@@ -297,7 +297,7 @@ export default function App() {
         <div className="max-w-7xl mx-auto border-t border-[#3d4f3e] mt-6 pt-6 text-center text-[12px] text-[#a69d8a] tracking-wider relative z-10 flex flex-col sm:flex-col justify-between items-center gap-4">
           <p>© 2026 Al-Quran Website • Holy Quran Translation & Recitals Hub.</p>
           <p className="flex items-center gap-1.5 font-sans justify-center">
-            Developed with dedication & <Heart className="h-3.5 w-3.5 text-rose-500 fill-rose-500 animate-pulse" /> for the Global Islamic Ummah.
+            Developed with dedication & <Heart className="hidden sm:inline h-3.5 w-3.5 text-rose-500 fill-rose-500 animate-pulse" /> for the Global Islamic Ummah.
           </p>
         </div>
       </footer>

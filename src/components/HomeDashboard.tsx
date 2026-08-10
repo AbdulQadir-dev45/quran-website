@@ -326,9 +326,9 @@ export default function HomeDashboard({
             <span>Islamic Hub & Al-Quran Explorer</span>
           </div>
 
-          <h1 className="text-3xl font-bold tracking-tight md:text-5xl font-sans">
+          <h1 className="text-2xl font-bold tracking-tight md:text-5xl font-sans">
             Explore the Wisdom <br />
-            <span className="text-natural-gold font-serif">
+            <span className="text-3xl md:text-5xl text-natural-gold font-serif">
               of the Holy Qur'an
             </span>
           </h1>
@@ -360,7 +360,7 @@ export default function HomeDashboard({
             
             <div className="mt-4 border-t border-natural-gold/100 pt-4">
               <div className="flex justify-end">
-                <span className="rounded-full bg-natural-gold/10 border border-natural-gold/60 px-4 py-2 text-sm text-natural-bg/80 font-arabic">
+                <span className="rounded-full bg-natural-gold/10 border border-natural-gold/60 px-4 py-2 text-[12px] sm:text-sm text-natural-bg/80 font-arabic">
                   حوالہ: مسند احمد: 3712 &nbsp;|&nbsp; صحیح ابن حبان: 972
                 </span>
               </div>
@@ -372,7 +372,7 @@ export default function HomeDashboard({
 
       {/* Main Global Search Engine Panel */}
       <section className="bg-natural-card border border-natural-border/50 rounded-[32px] p-6 md:p-8 shadow-xs relative z-10">
-        <h3 className="text-lg font-bold text-natural-text flex items-center gap-2 mb-2">
+        <h3 className="text-base sm:text-lg font-bold text-natural-text flex items-center gap-2 mb-2">
           <Search className="h-5 w-5 text-natural-moss" />
           Search Across The Entire Quran
         </h3>
@@ -476,7 +476,7 @@ export default function HomeDashboard({
           
           <div className="space-y-5 relative z-10">
             <div className="flex justify-between items-center">
-              <span className="text-xs font-semibold text-natural-forest bg-natural-moss/10 border border-natural-moss/20 px-3 py-1 rounded-full uppercase tracking-wider font-mono">
+              <span className="sm:text-xs text-[10px] font-semibold text-natural-forest bg-natural-moss/10 border border-natural-moss/20 px-3 py-1 rounded-full uppercase tracking-wider font-mono">
                 Ayah of the Day
               </span>
               <span className="text-xs font-medium text-natural-text-sub">
