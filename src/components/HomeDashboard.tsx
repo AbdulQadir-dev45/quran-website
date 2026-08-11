@@ -495,7 +495,7 @@ export default function HomeDashboard({
                 {/* Urdu */}
                 <div className="space-y-1 bg-natural-moss/5 p-3 rounded-xl border border-natural-moss/15">
                   <span className="text-[9px] font-semibold text-natural-forest uppercase tracking-widest font-mono block">Urdu Translation</span>
-                  <p className="text-sm md:text-base font-sans font-semibold text-natural-forest leading-relaxed">
+                  <p className="text-sm md:text-base font-urdu font-semibold text-natural-forest leading-relaxed">
                     {dailyVerse.urdu}
                   </p>
                 </div>

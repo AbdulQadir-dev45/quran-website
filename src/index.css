@@ -5,6 +5,7 @@
   --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
   --font-arabic: 'Scheherazade New', 'Amiri', 'Noto Naskh Arabic', serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+  --font-urdu: 'Noto Nastaliq Urdu', 'Noto Naskh Arabic', 'Amiri', serif;
 
   /* Natural Tones styling map */
   --color-natural-bg: var(--bg-primary);
