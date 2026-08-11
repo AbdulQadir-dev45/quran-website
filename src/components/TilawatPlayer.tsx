@@ -166,7 +166,7 @@ export default function TilawatPlayer({
                 }`}
               >
                 {/* Background ambient number tag */}
-                <div className="absolute right-0 bottom-0 text-7xl font-extrabold translate-y-4 translate-x-2 text-natural-text-sub/5 select-none font-mono">
+                <div className="absolute right-2 bottom-2 text-7xl font-extrabold translate-y-4 translate-x-2 text-natural-text-sub/8 select-none font-mono">
                   {surah.number}
                 </div>
 
