@@ -4,7 +4,7 @@
  */
 
 import React, { useState, useEffect, useRef } from "react";
-import { Play, Pause, Square, Volume2, VolumeX, SkipForward, RefreshCw, AudioLines } from "lucide-react";
+import { Play, Pause, Square, Volume2, VolumeX, RefreshCw, AudioLines } from "lucide-react";
 
 interface AudioPlayerBarProps {
   audioUrl: string;
@@ -31,7 +31,7 @@ export default function AudioPlayerBar({
   const [isSeeking, setIsSeeking] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // Re-initialize audio on url modification
+  // Initialize and reload audio element when audioUrl changes
   useEffect(() => {
     if (!audioUrl) return;
 
@@ -42,10 +42,8 @@ export default function AudioPlayerBar({
     }
 
     const audio = audioRef.current;
-    
-    // Set parameters
     audio.volume = isMuted ? 0 : volume;
-    
+
     const handleLoadedMetadata = () => {
       setDuration(audio.duration || 0);
       setIsLoading(false);
@@ -94,7 +92,7 @@ export default function AudioPlayerBar({
     };
   }, [audioUrl]);
 
-  // Handle Play / Pause commands from prop triggers
+  // Sync state prop with HTMLAudioElement
   useEffect(() => {
     if (!audioRef.current) return;
     const audio = audioRef.current;
@@ -110,7 +108,7 @@ export default function AudioPlayerBar({
     }
   }, [audioState]);
 
-  // Adjust volume
+  // Sync volume & mute
   useEffect(() => {
     if (!audioRef.current) return;
     audioRef.current.volume = isMuted ? 0 : volume;
@@ -153,29 +151,30 @@ export default function AudioPlayerBar({
   if (!audioUrl || audioState === "stopped") return null;
 
   return (
-    <div className="fixed bottom-0 left-0 w-full bg-[#3c3836] border-t border-[#8c8474]/20 text-[#FAF6EC] z-50 px-4 py-3 md:py-4 shadow-2xl animate-fade-in-up">
+    <div className="fixed bottom-0 left-0 w-full bg-stone-900 border-t border-emerald-900/40 text-stone-100 z-50 px-4 py-3 md:py-4 shadow-2xl">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
-        
-        {/* Info label description with Wave representation */}
+        {/* Title description with wave icon */}
         <div className="flex items-center gap-3 w-full md:w-1/3 min-w-0">
-          <div className="p-2.5 bg-natural-moss/20 text-natural-gold border border-natural-moss/40 rounded-xl flex-shrink-0 animate-pulse">
+          <div className="p-2.5 bg-emerald-950 text-amber-400 border border-emerald-800 rounded-xl flex-shrink-0 animate-pulse">
             {isLoading ? (
-              <RefreshCw className="h-5 w-5 animate-spin text-natural-gold" />
+              <RefreshCw className="h-5 w-5 animate-spin text-amber-400" />
             ) : (
-              <AudioLines className="h-5 w-5 text-natural-gold" />
+              <AudioLines className="h-5 w-5 text-amber-400" />
             )}
           </div>
           <div className="min-w-0 flex-1">
-            <p className="text-xs font-semibold text-natural-gold font-mono tracking-wide uppercase">Streaming Recitation</p>
-            <h4 className="text-sm font-bold text-white truncate mt-0.5 leading-snug font-serif" title={title}>
+            <p className="text-[10px] font-bold text-amber-400 font-mono tracking-wide uppercase">
+              Streaming Recitation
+            </p>
+            <h4 className="text-sm font-bold text-stone-100 truncate mt-0.5 leading-snug font-serif" title={title}>
               {title}
             </h4>
           </div>
         </div>
 
-        {/* Timeline controller slide */}
+        {/* Timeline scrubber */}
         <div className="flex items-center gap-3 w-full md:w-2/5 flex-col sm:flex-row">
-          <span className="text-[11px] font-mono text-[#FAF6EC]/80 select-none">
+          <span className="text-[11px] font-mono text-stone-300 select-none">
             {formatTime(currentTime)}
           </span>
           <div className="relative flex-1 w-full flex items-center">
@@ -187,22 +186,20 @@ export default function AudioPlayerBar({
               onChange={handleScrubChange}
               onMouseUp={handleScrubEnd}
               onTouchEnd={handleScrubEnd}
-              className="w-full accent-natural-gold h-1.5 rounded-lg bg-natural-forest cursor-pointer focus:outline-hidden"
+              className="w-full accent-amber-400 h-1.5 rounded-lg bg-stone-800 cursor-pointer focus:outline-none"
             />
           </div>
-          <span className="text-[11px] font-mono text-[#FAF6EC]/80 select-none">
+          <span className="text-[11px] font-mono text-stone-300 select-none">
             {formatTime(duration)}
           </span>
         </div>
 
-        {/* Global physical buttons control */}
+        {/* Controls */}
         <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-1/4">
-          
-          {/* Main triggers: Play Pause Stop */}
           <div className="flex items-center gap-3">
             <button
               onClick={handlePlayPause}
-              className="h-10 w-10 flex items-center justify-center rounded-xl bg-natural-moss hover:bg-natural-forest text-white shadow-sm transition-transform cursor-pointer hover:scale-105 active:scale-95"
+              className="h-10 w-10 flex items-center justify-center rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white shadow-sm transition-transform cursor-pointer hover:scale-105 active:scale-95"
               title={audioState === "playing" ? "Pause" : "Play"}
             >
               {audioState === "playing" ? (
@@ -214,24 +211,23 @@ export default function AudioPlayerBar({
 
             <button
               onClick={onStop}
-              className="h-10 w-10 flex items-center justify-center rounded-xl bg-white/5 hover:bg-rose-950/20 text-[#FAF6EC]/80 hover:text-rose-500 transition-colors border border-[#8c8474]/35 cursor-pointer"
+              className="h-10 w-10 flex items-center justify-center rounded-xl bg-stone-800 hover:bg-rose-950 text-stone-300 hover:text-rose-400 transition-colors border border-stone-700 cursor-pointer"
               title="Stop playback"
             >
               <Square className="h-4.5 w-4.5 fill-current" />
             </button>
           </div>
 
-          {/* Volume control slide controller */}
           <div className="flex items-center gap-2">
             <button
               onClick={toggleMute}
-              className="p-2 text-natural-gold hover:text-white transition-colors cursor-pointer"
+              className="p-2 text-amber-400 hover:text-white transition-colors cursor-pointer"
               title={isMuted ? "Unmute" : "Mute"}
             >
               {isMuted ? (
                 <VolumeX className="h-4.5 w-4.5 text-rose-400" />
               ) : (
-                <Volume2 className="h-4.5 w-4.5 text-[#E0D8CC]" />
+                <Volume2 className="h-4.5 w-4.5 text-stone-300" />
               )}
             </button>
             <input
@@ -244,12 +240,10 @@ export default function AudioPlayerBar({
                 setVolume(parseFloat(e.target.value));
                 if (isMuted) setIsMuted(false);
               }}
-              className="w-20 accent-natural-gold h-1 bg-natural-forest rounded-lg cursor-pointer"
+              className="w-20 accent-amber-400 h-1 bg-stone-800 rounded-lg cursor-pointer"
             />
           </div>
-
         </div>
-
       </div>
     </div>
   );

@@ -50,6 +50,16 @@ export interface Reciter {
   name: string;
   englishName: string;
   style?: string;
+  audioServer: string; // Base URL ending with '/'
+}
+
+export interface Surah {
+  number: number;
+  name: string;
+  englishName: string;
+  englishNameTranslation: string;
+  numberOfAyahs: number;
+  revelationType: string;
 }
 
 export interface Bookmark {

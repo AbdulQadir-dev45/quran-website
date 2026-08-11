@@ -4,9 +4,9 @@
  */
 
 import React, { useState, useEffect } from "react";
-import { Play, Pause, Search, UserCheck, Disc, Globe2, RefreshCw, Volume2 } from "lucide-react";
+import { Play, Pause, Search, UserCheck, Disc, RefreshCw, Volume2 } from "lucide-react";
 import { recitersList } from "../data/reciters";
-import { Surah, Reciter } from "../types";
+import { Surah } from "../types";
 
 interface TilawatPlayerProps {
   onPlaySurahAudio: (url: string, title?: string) => void;
@@ -25,7 +25,7 @@ export default function TilawatPlayer({
   const [isLoading, setIsLoading] = useState(false);
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
 
-  // Download Surah schema on mount
+  // Fetch Surah metadata list on mount
   useEffect(() => {
     const fetchSurahs = async () => {
       setIsLoading(true);
@@ -35,6 +35,8 @@ export default function TilawatPlayer({
         const data = await res.json();
         if (data && data.data) {
           setSurahs(data.data);
+        } else {
+          setErrorMsg("Could not load Surah list. Please try again.");
         }
       } catch (err) {
         console.error(err);
@@ -47,24 +49,27 @@ export default function TilawatPlayer({
     fetchSurahs();
   }, []);
 
-  const getQariAudioUrl = (surahNum: number) => {
-    return `https://cdn.islamic.network/quran/audio-surah/128/${selectedQari}/${surahNum}.mp3`;
-  };
+  const currentQariInfo = recitersList.find((q) => q.id === selectedQari) || recitersList[0];
 
-  const currentQariInfo = recitersList.find(q => q.id === selectedQari) || recitersList[0];
+  const getQariAudioUrl = (surahNum: number) => {
+    const paddedNum = String(surahNum).padStart(3, "0");
+    return `${currentQariInfo.audioServer}${paddedNum}.mp3`;
+  };
 
   const handlePlayClick = (surah: Surah) => {
     const url = getQariAudioUrl(surah.number);
     onPlaySurahAudio(
       url,
-      `Full Surah ${surah.englishName} • Reciter: ${currentQariInfo.englishName} (${currentQariInfo.style || 'Haramain'})`
+      `Full Surah ${surah.englishName} (${surah.name}) • Reciter: ${currentQariInfo.englishName} [${currentQariInfo.style || "Haramain"}]`
     );
   };
 
-  const filteredSurahs = surahs.filter((surah) =>
-    surah.englishName.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    surah.englishNameTranslation.toLowerCase().includes(searchQuery.toLowerCase()) ||
-    surah.number.toString() === searchQuery.trim()
+  const filteredSurahs = surahs.filter(
+    (surah) =>
+      surah.englishName.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      surah.englishNameTranslation.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      surah.name.includes(searchQuery) ||
+      surah.number.toString() === searchQuery.trim()
   );
 
   return (
