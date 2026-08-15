@@ -313,17 +313,17 @@ export const dailyVersesList: DailyVerse[] = [
     audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/432.mp3",
     category: "Patience & Hope"
   },
-  {
-    id: 28,
-    surahNumber: 3,
-    ayahNumber: 159,
-    surahName: "Ali 'Imran (Family of Imran)",
-    arabic: "فَبِمَا رَحْمَةٍ مِّنَ اللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ الْقَلْبِ لَانفَضُّوا مِنْ حَوْلِكَ ۖ فَاعْفُ عَنْهُمْ وَاسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِي الْأَمْرِ ۖ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ ۚ إِنَّ اللَّهَ يُحِبُّ الْمُتَوَكِّلِينَ",
-    english: "So by mercy from Allah, [O Muhammad], you were lenient with them. And if you had been rude in speech and harsh in heart, they would have disbanded from about you... Indeed, Allah loves those who rely upon Him.",
-    urdu: "اللہ کی رحمت سے آپ ان کے لیے نرم دل ہو گئے... اور جب آپ پختہ ارادہ کر لیں تو اللہ پر بھروسہ کریں، بے شک اللہ توکل کرنے والوں سے محبت کرتا ہے۔",
-    audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/452.mp3",
-    category: "Faith & Trust"
-  },
+  // {
+  //   id: 28,
+  //   surahNumber: 3,
+  //   ayahNumber: 159,
+  //   surahName: "Ali 'Imran (Family of Imran)",
+  //   arabic: "فَبِمَا رَحْمَةٍ مِّنَ اللَّهِ لِنتَ لَهُمْ ۖ وَلَوْ كُنتَ فَظًّا غَلِيظَ الْقَلْبِ لَانفَضُّوا مِنْ حَوْلِكَ ۖ فَاعْفُ عَنْهُمْ وَاسْتَغْفِرْ لَهُمْ وَشَاوِرْهُمْ فِي الْأَمْرِ ۖ فَإِذَا عَزَمْتَ فَتَوَكَّلْ عَلَى اللَّهِ ۚ إِنَّ اللَّهَ يُحِبُّ الْمُتَوَكِّلِينَ",
+  //   english: "So by mercy from Allah, [O Muhammad], you were lenient with them. And if you had been rude in speech and harsh in heart, they would have disbanded from about you... Indeed, Allah loves those who rely upon Him.",
+  //   urdu: "اللہ کی رحمت سے آپ ان کے لیے نرم دل ہو گئے... اور جب آپ پختہ ارادہ کر لیں تو اللہ پر بھروسہ کریں، بے شک اللہ توکل کرنے والوں سے محبت کرتا ہے۔",
+  //   audioUrl: "https://cdn.islamic.network/quran/audio/128/ar.alafasy/452.mp3",
+  //   category: "Faith & Trust"
+  // },
   {
     id: 29,
     surahNumber: 3,
