@@ -11,6 +11,7 @@ export interface TemplateProps {
   surahNumber: number;
   ayahNumber: number;
 
+  bismillahFontSize: number;
   arabicFontSize: number;
   urduFontSize: number;
   englishFontSize: number;
@@ -33,6 +34,7 @@ const Template4: React.FC<TemplateProps> = ({
   surahName,
   ayahNumber,
 
+  bismillahFontSize,
   arabicFontSize,
   urduFontSize,
   englishFontSize,
@@ -67,7 +69,7 @@ const Template4: React.FC<TemplateProps> = ({
         height: 1350,
         position: "relative",
         overflow: "hidden",
-        padding: 60,
+        padding: 45,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -147,8 +149,8 @@ const Template4: React.FC<TemplateProps> = ({
           style={{
             fontSize: 46,
             fontWeight: 700,
-            marginTop: 10,
-            marginBottom: 10,
+            marginTop: 6,
+            marginBottom: 8,
             color: "#6B4F2A"
           }}
         >
@@ -160,7 +162,7 @@ const Template4: React.FC<TemplateProps> = ({
             width: "100%",
             height: 2,
             background: "rgba(139,107,63,.20)",
-            marginBottom: 35
+            marginBottom: 20
           }}
         />
 
@@ -168,9 +170,9 @@ const Template4: React.FC<TemplateProps> = ({
           <div
             style={{
               fontFamily: "'Amiri', serif",
-              fontSize: 60,
+              fontSize: bismillahFontSize,
               color: "#8B6B3F",
-              marginBottom: 25
+              marginBottom: 26
             }}
           >
             ﷽
@@ -200,7 +202,7 @@ const Template4: React.FC<TemplateProps> = ({
           justifyContent: "center",
           alignItems: "center",
           zIndex: 5,
-          marginTop: 30,
+          marginTop: 20,
         }}
       >
         {/* Arabic Manuscript Card */}
@@ -221,7 +223,7 @@ const Template4: React.FC<TemplateProps> = ({
               fontSize: 18,
               letterSpacing: 4,
               color: "#8B6B3F",
-              marginBottom: 20,
+              marginBottom: 16,
               fontWeight: 700
             }}
           >
@@ -246,8 +248,8 @@ const Template4: React.FC<TemplateProps> = ({
           style={{
             width: "82%",
             height: 2,
-            marginTop: 25,
-            marginBottom: 25,
+            marginTop: 20,
+            marginBottom: 20,
             background:
               "linear-gradient(to right,transparent,#8B6B3F,#D4AF37,#8B6B3F,transparent)"
           }}
@@ -282,7 +284,7 @@ const Template4: React.FC<TemplateProps> = ({
                 fontFamily: "'Noto Nastaliq Urdu', serif",
                 fontSize: urduFontSize,
                 color: "#4A3728",
-                lineHeight: 1.6,
+                lineHeight: 2.2,
                 direction: "rtl",
               }}
             >
@@ -411,7 +413,7 @@ const Template4: React.FC<TemplateProps> = ({
           fontSize: 18,
           color: "rgba(74,55,40,.70)",
           textAlign: "center",
-          marginTop: 15
+          marginTop: 8
         }}
       >
         © {new Date().getFullYear()} {brandName}

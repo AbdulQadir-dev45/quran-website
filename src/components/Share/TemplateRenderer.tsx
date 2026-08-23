@@ -16,6 +16,8 @@ export interface TemplateRendererProps {
   surahNumber: number;
   ayahNumber: number;
 
+  // Font Sizes
+  bismillahFontSize: number;
   arabicFontSize: number;
   urduFontSize: number;
   englishFontSize: number;
@@ -31,9 +33,7 @@ export interface TemplateRendererProps {
 }
 
 const TemplateRenderer: React.FC<TemplateRendererProps> = (props) => {
-
   switch (props.template) {
-
     case 1:
       return <Template1 {...props} />;
 

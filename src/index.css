@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
 @theme {
@@ -17,6 +18,12 @@
   --color-natural-forest: var(--color-forest);
   --color-natural-pine: var(--color-pine);
   --color-natural-gold: var(--color-gold);
+}
+
+.font-urdu {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  line-height: 2.4;
+  color: #5A6D56;
 }
 
 :root {

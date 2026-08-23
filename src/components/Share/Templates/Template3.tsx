@@ -11,6 +11,7 @@ export interface TemplateProps {
   surahNumber: number;
   ayahNumber: number;
 
+  bismillahFontSize: number;
   arabicFontSize: number;
   urduFontSize: number;
   englishFontSize: number;
@@ -33,6 +34,7 @@ const Template3: React.FC<TemplateProps> = ({
   surahName,
   ayahNumber,
 
+  bismillahFontSize,
   arabicFontSize,
   urduFontSize,
   englishFontSize,
@@ -73,7 +75,7 @@ const Template3: React.FC<TemplateProps> = ({
         flexDirection: "column",
         justifyContent: "space-between",
 
-        padding: 60,
+        padding: 45,
 
         borderRadius: 42,
 
@@ -189,9 +191,9 @@ const Template3: React.FC<TemplateProps> = ({
 
         <div
           style={{
-            marginTop: 20,
+            marginTop: 10,
             width: "70%",
-            height: 1,
+            height: 2,
             background:
               "linear-gradient(to right, transparent, rgba(255,255,255,.3), transparent)",
           }}
@@ -201,10 +203,10 @@ const Template3: React.FC<TemplateProps> = ({
           <div
             style={{
               fontFamily: "'Amiri', 'Amiri Quran', serif",
-              fontSize: 60,
+              fontSize: bismillahFontSize,
               color: "#ffffff",
               textShadow: "0 0 35px rgba(255,255,255,.35)",
-              marginTop: 15,
+              marginTop: 16,
             }}
           >
             ﷽
@@ -213,7 +215,7 @@ const Template3: React.FC<TemplateProps> = ({
 
         <div
           style={{
-            marginTop: 25,
+            marginTop: 26,
             padding: "16px 36px",
             borderRadius: 999,
             background: "rgba(255,255,255,.08)",
@@ -332,7 +334,7 @@ const Template3: React.FC<TemplateProps> = ({
                 textAlign: "right",
                 fontFamily: "'Noto Nastaliq Urdu', serif",
                 fontSize: urduFontSize,
-                lineHeight: 1.6,
+                lineHeight: 2.2,
                 color: "#F8FAFC",
               }}
             >

@@ -6,6 +6,47 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Play, Pause, Bookmark, ListFilter, Trash2, Search, Volume2, RefreshCw } from "lucide-react";
 import { Surah, Ayah, TranslationAyah } from "../types";
+import { Share2 } from "lucide-react";
+import ShareTemplateModal from "./Share/ShareTemplateModal";
+
+export function ShareButton({
+  arabic,
+  urdu,
+  english,
+  surahName,
+  surahNumber,
+  ayahNumber,
+}: ShareButtonProps) {
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <>
+      <div className="relative inline-block z-9999">
+        <button
+          type="button"
+          onClick={() => setShowModal(true)}
+          className="p-2 rounded-xl bg-natural-bg hover:bg-natural-moss/10 hover:text-natural-moss text-natural-text-sub transition-all cursor-pointer"
+          title="Share Ayah"
+          aria-label="Share Ayah"
+        >
+          <Share2 className="h-4 w-4" />
+        </button>
+      </div>
+
+      {showModal && (
+        <ShareTemplateModal
+          arabic={arabic}
+          urdu={urdu}
+          english={english}
+          surahName={surahName}
+          surahNumber={surahNumber}
+          ayahNumber={ayahNumber}
+          onClose={() => setShowModal(false)}
+        />
+      )}
+    </>
+  );
+}
 
 interface SurahTranslationViewerProps {
   initialLanguage: "urdu" | "english"|"dual";
@@ -408,6 +449,25 @@ export default function SurahTranslationViewer({
                       >
                         <Bookmark className={`h-4 w-4 ${isBookmarked ? "fill-natural-gold text-natural-gold" : ""}`} />
                       </button>
+
+                      <ShareButton
+                        arabic={ayah.text}
+                        urdu={
+                          language === "urdu"
+                            ? transAyah?.text || ""
+                            : language === "dual"
+                              ? secTransAyah?.text || ""
+                              : ""
+                        }
+                        english={
+                          language === "english" || language === "dual"
+                            ? transAyah?.text || ""
+                            : ""
+                        }
+                        surahName={getSurahNameByNumber(selectedSurahNum)}
+                        surahNumber={selectedSurahNum}
+                        ayahNumber={ayah.numberInSurah}
+                      />
                     </div>
                   </div>
 

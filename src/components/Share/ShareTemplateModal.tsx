@@ -41,8 +41,9 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
 
   // Customization states
   const [selectedTemplate, setSelectedTemplate] = useState<number>(1);
+  const [bismillahFontSize, setBismillahFontSize] = useState<number>(54);
   const [arabicFontSize, setArabicFontSize] = useState<number>(54);
-  const [urduFontSize, setUrduFontSize] = useState<number>(30);
+  const [urduFontSize, setUrduFontSize] = useState<number>(28);
   const [englishFontSize, setEnglishFontSize] = useState<number>(26);
 
   // Optional toggles
@@ -436,6 +437,7 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
                   surahName={surahName}
                   surahNumber={surahNumber}
                   ayahNumber={ayahNumber}
+                  bismillahFontSize={bismillahFontSize}
                   arabicFontSize={arabicFontSize}
                   urduFontSize={urduFontSize}
                   englishFontSize={englishFontSize}
@@ -518,7 +520,23 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
                 <span>Typography & Font Sizes</span>
               </h3>
 
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-950/40 p-4 rounded-2xl border border-slate-800/80">
+              <div className="grid grid-cols-1 md:grid-cols-4 gap-4 bg-slate-950/40 p-4 rounded-2xl border border-slate-800/80">
+
+              {/* Bismillah */}
+                <div>
+                  <div className="flex justify-between text-xs font-semibold text-slate-300 mb-2">
+                    <span className="bismillahFontSize">Bismillah</span>
+                    <span className="text-amber-400 font-mono">{bismillahFontSize}px</span>
+                  </div>
+                  <input
+                    type="range"
+                    min={40}
+                    max={65}
+                    value={bismillahFontSize}
+                    onChange={(e) => setBismillahFontSize(Number(e.target.value))}
+                    className="w-full accent-amber-400 bg-slate-800 rounded-lg h-2 cursor-pointer"
+                  />
+                </div>
                 
                 {/* Arabic */}
                 <div>
@@ -529,7 +547,7 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
                   <input
                     type="range"
                     min={40}
-                    max={70}
+                    max={65}
                     value={arabicFontSize}
                     onChange={(e) => setArabicFontSize(Number(e.target.value))}
                     className="w-full accent-amber-400 bg-slate-800 rounded-lg h-2 cursor-pointer"
@@ -545,7 +563,7 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
                   <input
                     type="range"
                     min={18}
-                    max={46}
+                    max={42}
                     value={urduFontSize}
                     onChange={(e) => setUrduFontSize(Number(e.target.value))}
                     className="w-full accent-amber-400 bg-slate-800 rounded-lg h-2 cursor-pointer"

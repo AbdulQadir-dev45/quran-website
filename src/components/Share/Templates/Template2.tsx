@@ -11,6 +11,7 @@ export interface TemplateProps {
   surahNumber: number;
   ayahNumber: number;
 
+  bismillahFontSize: number;
   arabicFontSize: number;
   urduFontSize: number;
   englishFontSize: number;
@@ -33,6 +34,7 @@ const Template2: React.FC<TemplateProps> = ({
   surahName,
   ayahNumber,
 
+  bismillahFontSize,
   arabicFontSize,
   urduFontSize,
   englishFontSize,
@@ -67,7 +69,7 @@ const Template2: React.FC<TemplateProps> = ({
         height: 1350,
         position: "relative",
         overflow: "hidden",
-        padding: 50,
+        padding: 45,
         display: "flex",
         flexDirection: "column",
         justifyContent: "space-between",
@@ -140,8 +142,8 @@ const Template2: React.FC<TemplateProps> = ({
         <h1
           style={{
             fontSize: 48,
-            marginTop: 20,
-            marginBottom: 15,
+            marginTop: 10,
+            marginBottom: 12,
             color: "#F6D76B",
             fontWeight: 700,
           }}
@@ -154,7 +156,7 @@ const Template2: React.FC<TemplateProps> = ({
             width: "100%",
             height: 2,
             background: "rgba(201,162,39,.25)",
-            marginBottom: 30,
+            marginBottom: 20,
           }}
         />
 
@@ -162,9 +164,9 @@ const Template2: React.FC<TemplateProps> = ({
           <div
             style={{
               fontFamily: "'Amiri', serif",
-              fontSize: 60,
+              fontSize: bismillahFontSize,
               color: "#F6D76B",
-              marginBottom: 25,
+              marginBottom: 20,
             }}
           >
             ﷽
@@ -175,8 +177,8 @@ const Template2: React.FC<TemplateProps> = ({
         <div
           style={{
             height: 2,
-            marginTop: 45,
-            marginBottom: 45,
+            marginTop: 40,
+            marginBottom: 20,
             background:
               "linear-gradient(to right,transparent,#C9A227,#F8E28A,#C9A227,transparent)",
           }}
@@ -193,8 +195,8 @@ const Template2: React.FC<TemplateProps> = ({
           justifyContent: "center",
           alignItems: "center",
           zIndex: 2,
-          marginTop: 40,
-          marginBottom: 40,
+          marginTop: 20,
+          marginBottom: 20,
         }}
       >
         {/* Arabic */}
@@ -223,8 +225,8 @@ const Template2: React.FC<TemplateProps> = ({
           style={{
             width: "82%",
             height: 2,
-            marginTop: 45,
-            marginBottom: 45,
+            marginTop: 40,
+            marginBottom: 30,
             background:
               "linear-gradient(to right,transparent,#C9A227,#F8E28A,#C9A227,transparent)",
           }}
@@ -264,7 +266,7 @@ const Template2: React.FC<TemplateProps> = ({
                 style={{
                   fontFamily: "'Noto Nastaliq Urdu', serif",
                   fontSize: urduFontSize,
-                  lineHeight: 1.6,
+                  lineHeight: 2.2,
                   letterSpacing: 3,
                   color: "#F8F8F8",
                   direction: "rtl",
