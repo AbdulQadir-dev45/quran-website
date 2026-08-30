@@ -485,7 +485,7 @@ export default function SurahTranslationViewer({
                     {(language === "urdu" || language === "dual") && transAyah && (
                       <div className="space-y-1">
                         <span className="text-[10px] font-semibold text-natural-forest uppercase tracking-widest font-mono">Urdu Translation</span>
-                        <p className="text-lg font-urdu font-semibold text-natural-forest leading-relaxed text-right md:text-left">
+                        <p className="text-lg font-urdu font-semibold text-natural-forest leading-relaxed text-right">
                           {language === "urdu" ? transAyah.text : secTransAyah?.text}
                         </p>
                       </div>

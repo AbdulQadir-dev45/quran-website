@@ -369,7 +369,8 @@ const Template2: React.FC<TemplateProps> = ({
 
           <div
             style={{
-              fontSize: 30,
+              fontFamily:"'Noto Nastaliq Urdu', serif",
+              fontSize: 35,
               color: "#F6D76B",
             }}
           >

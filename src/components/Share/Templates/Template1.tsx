@@ -328,7 +328,7 @@ const Template1: React.FC<TemplateProps> = ({
             style={{
               fontSize: 30,
               color: "#F5F5F5",
-              margin: 10,
+              marginLeft: 6,
             }}
           >
             📅 {gregorian}
@@ -336,9 +336,10 @@ const Template1: React.FC<TemplateProps> = ({
 
           <div
             style={{
-              fontSize: 34,
+              fontFamily:"'Noto Nastaliq Urdu', serif",
+              fontSize: 35,
               color: "#FFD54A",
-              margin: 5,
+              marginLeft: 6,
             }}
           >
             🌙 {hijri} AH

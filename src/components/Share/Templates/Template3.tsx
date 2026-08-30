@@ -421,8 +421,9 @@ const Template3: React.FC<TemplateProps> = ({
 
             <div
               style={{
+                fontFamily:"'Noto Nastaliq Urdu', serif",
                 color: "#7DD3FC",
-                fontSize: 34,
+                fontSize: 35,
               }}
             >
               🌙 {hijri} AH

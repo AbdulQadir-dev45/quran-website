@@ -26,44 +26,437 @@
   color: #5A6D56;
 }
 
+/* ===============================================
+   LIGHT MODE
+   =============================================== */
+
 :root {
-  --bg-primary: #FDFBF7;
-  --bg-secondary: #F2EDE4;
-  --border-color: #E0D8CC;
-  --text-primary: #3C3836;
-  --text-secondary: #8C8474;
-  --color-moss: #5A6D56;
-  --color-forest: #2C3E2D;
-  --color-pine: #485945;
-  --color-gold: #A68A56;
+  --bg-primary: #FBFAF7;
+  --bg-secondary: #F3F0E9;
+
+  --border-color: #E4DED3;
+
+  --text-primary: #292824;
+  --text-secondary: #777267;
+
+  --color-moss: #526B50;
+  --color-forest: #263D2C;
+  --color-pine: #3F5A43;
+
+  --color-gold: #A8894E;
+
+  /* Premium surfaces */
+  --surface-glass: rgba(255, 255, 255, 0.72);
+  --surface-hover: rgba(82, 107, 80, 0.06);
+
+  /* Shadows */
+  --shadow-soft: 0 8px 30px rgba(45, 43, 38, 0.06);
 }
+
+
+/* ==============================================
+   PREMIUM DARK MODE
+   ============================================== */
 
 .dark {
-  --bg-primary: #1A1817;
-  --bg-secondary: #252321;
-  --border-color: #383431;
-  --text-primary: #F2EDE4;
-  --text-secondary: #9E9585;
-  --color-moss: #8A9D85;
-  --color-forest: #43543F;
-  --color-pine: #576B53;
-  --color-gold: #CBB07B;
+
+  /* Main background */
+  --bg-primary: #080D0A;
+
+  /* Cards / panels */
+  --bg-secondary: #101813;
+
+  /* Borders */
+  --border-color: #243229;
+
+  /* Text */
+  --text-primary: #F3F1E8;
+  --text-secondary: #A4AEA5;
+
+  /* Emerald / Forest */
+  --color-moss: #8FAE91;
+  --color-forest: #4E7659;
+  --color-pine: #6E9274;
+
+  /* Gold */
+  --color-gold: #D6B96A;
+
+  /* Glass surfaces */
+  --surface-glass: rgba(16, 24, 19, 0.72);
+
+  /* Hover */
+  --surface-hover: rgba(143, 174, 145, 0.07);
+
+  /* Shadows */
+  --shadow-soft:
+    0 10px 40px rgba(0, 0, 0, 0.35);
 }
 
-/* Customize scrollbars for a cleaner look */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+
+/* ===========================================
+   BODY
+   =========================================== */
+
+html {
+  scroll-behavior: smooth;
 }
+
+body {
+
+  background: var(--bg-primary);
+
+  color: var(--text-primary);
+
+  font-family: 'Plus Jakarta Sans',
+    system-ui,
+    -apple-system,
+    sans-serif;
+
+  transition:
+    background-color 0.35s ease,
+    color 0.35s ease;
+}
+
+
+/* =============================================
+   DARK MODE BACKGROUND
+   ============================================= */
+
+.dark body {
+
+  background:
+
+    /* Emerald glow — top left */
+    radial-gradient(
+      circle at 8% 5%,
+      rgba(61, 105, 72, 0.16),
+      transparent 30%
+    ),
+
+    /* Gold glow — top right */
+    radial-gradient(
+      circle at 92% 12%,
+      rgba(214, 185, 106, 0.07),
+      transparent 25%
+    ),
+
+    /* Emerald glow — bottom */
+    radial-gradient(
+      circle at 50% 100%,
+      rgba(45, 92, 59, 0.10),
+      transparent 35%
+    ),
+
+    #080D0A;
+
+  background-attachment: fixed;
+}
+
+
+/* ==============================================
+   PREMIUM GLASS
+   ============================================== */
+
+.dark .glass,
+.dark .glass-card {
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.045),
+      rgba(255, 255, 255, 0.015)
+    );
+
+  border: 1px solid rgba(143, 174, 145, 0.13);
+
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  box-shadow:
+    0 12px 45px rgba(0, 0, 0, 0.28),
+    inset 0 1px 0 rgba(255, 255, 255, 0.035);
+
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease,
+    transform 0.25s ease;
+}
+
+
+/* =============================================
+   GLASS HOVER
+   ============================================= */
+
+.dark .glass:hover,
+.dark .glass-card:hover {
+
+  border-color: rgba(214, 185, 106, 0.25);
+
+  box-shadow:
+    0 18px 55px rgba(0, 0, 0, 0.40),
+    0 0 35px rgba(80, 125, 88, 0.06);
+}
+
+
+/* ===========================================
+   PREMIUM CARD
+   =========================================== */
+
+.dark .premium-card {
+
+  background:
+    linear-gradient(
+      145deg,
+      #131C16 0%,
+      #0E1511 100%
+    );
+
+  border: 1px solid #26352B;
+
+  box-shadow:
+    0 12px 35px rgba(0, 0, 0, 0.32),
+    inset 0 1px 0 rgba(255, 255, 255, 0.025);
+
+  transition:
+    transform 0.25s ease,
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+
+.dark .premium-card:hover {
+
+  transform: translateY(-2px);
+
+  border-color:
+    rgba(143, 174, 145, 0.30);
+
+  box-shadow:
+    0 18px 45px rgba(0, 0, 0, 0.40),
+    0 0 30px rgba(78, 118, 89, 0.08);
+}
+
+
+/* =======================================
+   GOLD ACCENT
+   ======================================= */
+
+.dark .gold-accent {
+
+  color: var(--color-gold);
+
+  text-shadow:
+    0 0 18px rgba(214, 185, 106, 0.16);
+}
+
+
+/* =========================================
+   GREEN ACCENT
+   ========================================= */
+
+.dark .green-accent {
+
+  color: var(--color-moss);
+
+  text-shadow:
+    0 0 20px rgba(143, 174, 145, 0.12);
+}
+
+
+/* ==========================================
+   QURAN ARABIC TEXT
+   ========================================== */
+
+.dark .font-arabic {
+  color: #F4EEDC;
+
+  text-shadow:
+    0 1px 18px rgba(214, 185, 106, 0.06);
+}
+
+
+/* ==========================================
+   URDU TEXT
+   ========================================== */
+
+.dark .font-urdu {
+  color: #B9C7B8;
+
+  text-shadow:
+    0 1px 12px rgba(143, 174, 145, 0.05);
+}
+
+
+/* =======================================
+   INPUTS
+   ======================================= */
+
+.dark input,
+.dark textarea,
+.dark select {
+
+  background: #0D1510;
+
+  color: var(--text-primary);
+
+  border-color: #28362D;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    background 0.2s ease;
+}
+
+
+.dark input::placeholder,
+.dark textarea::placeholder {
+
+  color: #68736A;
+}
+
+
+.dark input:focus,
+.dark textarea:focus,
+.dark select:focus {
+
+  border-color:
+    rgba(143, 174, 145, 0.55);
+
+  box-shadow:
+    0 0 0 3px rgba(143, 174, 145, 0.08),
+    0 0 25px rgba(78, 118, 89, 0.06);
+
+  outline: none;
+}
+
+
+/* ==========================================
+   BUTTONS
+   ========================================== */
+
+.dark .premium-button {
+
+  background:
+    linear-gradient(
+      135deg,
+      #587B5E,
+      #3E6147
+    );
+
+  color: #F5F2E9;
+
+  border: 1px solid rgba(143, 174, 145, 0.20);
+
+  box-shadow:
+    0 8px 25px rgba(35, 75, 44, 0.25);
+
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+
+.dark .premium-button:hover {
+
+  transform: translateY(-1px);
+
+  box-shadow:
+    0 12px 32px rgba(35, 75, 44, 0.35),
+    0 0 25px rgba(143, 174, 145, 0.08);
+}
+
+
+/* =========================================
+   DIVIDERS
+   ========================================= */
+
+.dark hr {
+
+  border-color:
+    rgba(143, 174, 145, 0.10);
+}
+
+
+/* ==========================================
+   SELECTION
+   ========================================== */
+
+::selection {
+
+  background: rgba(82, 107, 80, 0.25);
+
+  color: inherit;
+}
+
+.dark ::selection {
+
+  background:
+    rgba(214, 185, 106, 0.22);
+
+  color: #FFF9E8;
+}
+
+
+/* ==========================================
+   SCROLLBAR
+   ========================================== */
+
+::-webkit-scrollbar {
+
+  width: 7px;
+  height: 7px;
+}
+
+
 ::-webkit-scrollbar-track {
+
   background: transparent;
 }
+
+
 ::-webkit-scrollbar-thumb {
-  background: rgba(90, 109, 86, 0.20);
-  border-radius: 4px;
+
+  background:
+    rgba(82, 107, 80, 0.22);
+
+  border-radius: 20px;
+
+  transition:
+    background 0.2s ease;
 }
+
+
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(90, 109, 86, 0.40);
+
+  background:
+    rgba(82, 107, 80, 0.45);
 }
 
 
+/* Dark scrollbar */
+
+.dark::-webkit-scrollbar-thumb {
+
+  background:
+    rgba(143, 174, 145, 0.22);
+}
+
+
+.dark::-webkit-scrollbar-thumb:hover {
+
+  background:
+    rgba(214, 185, 106, 0.55);
+}
+
+
+/* ========================================
+   SMOOTH THEME TRANSITION
+   ======================================== */
+
+* {
+
+  transition:
+    border-color 0.25s ease,
+    background-color 0.25s ease,
+    color 0.25s ease;
+}
