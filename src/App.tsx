@@ -93,7 +93,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col transition-colors duration-300 font-sans bg-natural-bg text-natural-text">
+    <div className="min-h-screen w-full min-w-0 overflow-x-hidden transition-colors duration-300 font-sans bg-natural-bg text-natural-text">
       
       {/* Dynamic Arabesque texture background overlay */}
       <div className="absolute inset-0 arabesque-bg opacity-5 pointer-events-none z-0" />

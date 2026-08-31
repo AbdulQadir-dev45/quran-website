@@ -173,11 +173,11 @@ export default function AudioPlayerBar({
         </div>
 
         {/* Timeline scrubber */}
-        <div className="flex items-center gap-3 w-full md:w-2/5 flex-col sm:flex-row">
-          <span className="text-[11px] font-mono text-stone-300 select-none">
-            {formatTime(currentTime)}
-          </span>
-          <div className="relative flex-1 w-full flex items-center">
+        <div className=" flex min-w-0 w-full items-center gap-2">
+            <span className=" w-10 shrink-0 text-[10px] text-stone-300 font-mono text-left sm:w-12 sm:text-[11px]" >
+              {formatTime(currentTime)}
+            </span>
+
             <input
               type="range"
               min="0"
@@ -186,13 +186,13 @@ export default function AudioPlayerBar({
               onChange={handleScrubChange}
               onMouseUp={handleScrubEnd}
               onTouchEnd={handleScrubEnd}
-              className="w-full accent-amber-400 h-1.5 rounded-lg bg-stone-800 cursor-pointer focus:outline-none"
+              className=" min-w-0 flex-1 cursor-pointer accent-amber-400"
             />
+
+            <span className=" w-10 shrink-0 text-right text-[10px] text-stone-300 font-mono sm:w-12 sm:text-[11px]" >
+              {formatTime(duration)}
+            </span>
           </div>
-          <span className="text-[11px] font-mono text-stone-300 select-none">
-            {formatTime(duration)}
-          </span>
-        </div>
 
         {/* Controls */}
         <div className="flex items-center justify-between md:justify-end gap-6 w-full md:w-1/4">
