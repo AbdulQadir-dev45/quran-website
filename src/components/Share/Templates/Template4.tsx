@@ -186,10 +186,10 @@ const Template4: React.FC<TemplateProps> = ({
             color: "#FFF8EE",
             borderRadius: 50,
             fontWeight: 600,
-            fontSize: 22
+            fontSize: 24
           }}
         >
-          Surah {surahName} • Ayah {ayahNumber}
+          <span style={{ color: "#FFF8EE", paddingRight: "6px" }}>۞</span> Surah {surahName} • Ayah {ayahNumber}
         </div>
       </div>
 
@@ -365,15 +365,27 @@ const Template4: React.FC<TemplateProps> = ({
           </div>
 
           <div
-            style={{
-              fontFamily:"'Noto Nastaliq Urdu', serif",
-              fontSize: 35,
-              color: "#8B6B3F",
-              fontWeight: 600
-            }}
-          >
-            🌙 {hijri} AH
-          </div>
+              style={{
+                display: "inline-flex",
+                alignItems: "center",
+                gap: 12,
+                borderRadius: 16,
+                paddingBottom: 24,
+              }}
+            >
+              <span style={{ paddingTop: 20, fontSize: 30 }}>🌙</span>
+              <span
+                style={{
+                  fontFamily: "'Noto Nastaliq Urdu', serif",
+                  fontSize: 34,
+                  fontWeight: 600,
+                  color: "#5A4633",
+                  direction: "rtl",
+                }}
+              >
+                {hijri} ھ
+              </span>
+            </div>
         </div>
 
         {/* QR Card */}

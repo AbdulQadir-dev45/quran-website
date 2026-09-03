@@ -348,6 +348,12 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
       desc: "Warm Parchment",
       color: "from-amber-100 to-orange-100 text-amber-950 border-amber-700",
     },
+    {
+      id: 5,
+      name: "Modern",
+      desc: "Luxury Emerald, Gold & Glass",
+      color: "from-emerald-950 via-teal-900 to-slate-950 border-amber-400",
+    },
   ];
 
   return (
@@ -482,7 +488,7 @@ const ShareTemplateModal: React.FC<ShareTemplateModalProps> = ({
                 </h3>
               </div>
 
-              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+              <div className="grid grid-cols-2 lg:grid-cols-5 gap-4">
                 {templateOptions.map((template) => (
                   <button
                     key={template.id}

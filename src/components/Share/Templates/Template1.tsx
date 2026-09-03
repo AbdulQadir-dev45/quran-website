@@ -318,10 +318,10 @@ const Template1: React.FC<TemplateProps> = ({
             background: "#FFD54A",
             color: "#14532D",
             fontWeight: 700,
-            fontSize: 22,
+            fontSize: 24,
           }}
           >
-            Surah {surahName} • Ayah {ayahNumber}
+            <span style={{ color: "#14532D", paddingRight: "4px" }}>۞</span> Surah {surahName} • Ayah {ayahNumber}
           </div>
 
           <div

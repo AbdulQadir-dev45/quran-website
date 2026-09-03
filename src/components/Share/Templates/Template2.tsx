@@ -347,15 +347,15 @@ const Template2: React.FC<TemplateProps> = ({
           <div
             style={{
             display: "inline-block",
-            padding: "12px 30px",
+            padding: "12px 28px",
             border: "2px solid #C9A227",
             borderRadius: 50,
-            fontSize: 22,
+            fontSize: 24,
             fontWeight: 700,
             color: "#F6D76B",
           }}
           >
-            Surah {surahName} • Ayah {ayahNumber}
+            <span style={{ color: "#C9A227", paddingRight: "6px" }}>۞</span> Surah {surahName} • Ayah {ayahNumber}
           </div>
 
           <div

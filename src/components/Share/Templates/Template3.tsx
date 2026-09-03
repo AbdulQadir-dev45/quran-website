@@ -224,7 +224,7 @@ const Template3: React.FC<TemplateProps> = ({
             fontWeight: 700,
           }}
         >
-          Surah {surahName} • Ayah {ayahNumber}
+          <span style={{ color: "#FACC15", paddingRight: "6px" }}>۞</span> Surah {surahName} • Ayah {ayahNumber}
         </div>
       </div>
 
